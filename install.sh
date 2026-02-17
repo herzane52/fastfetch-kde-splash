@@ -5,33 +5,50 @@
 
 set -e
 
-echo "🚀 Fastfetch KDE Splash Screen Kurulumu Başlıyor..."
+# Language detection (TR or EN)
+if [[ $LANG == "tr"* ]]; then
+    MSG_START="🚀 Fastfetch KDE Splash Screen Kurulumu Başlıyor..."
+    MSG_BACKUP="⚠️  Mevcut kurulum bulundu, yedekleniyor..."
+    MSG_COPY="📦 Dosyalar kopyalanıyor..."
+    MSG_DONE="✅ Kurulum tamamlandı!"
+    MSG_USE="📌 Kullanım:"
+    MSG_STEP1="1. Sistem Ayarları > Görünüm > Açılış Ekranı (Splash Screen)"
+    MSG_STEP2="2. 'fastfetch' temasını seçin ve Uygula'ya tıklayın."
+    MSG_NOTE="💡 Not: 'fastfetch' paketinin kurulu olduğundan emin olun."
+else
+    MSG_START="🚀 Starting Fastfetch KDE Splash Screen Installation..."
+    MSG_BACKUP="⚠️  Existing installation found, creating backup..."
+    MSG_COPY="📦 Copying files..."
+    MSG_DONE="✅ Installation complete!"
+    MSG_USE="📌 Usage:"
+    MSG_STEP1="1. System Settings > Appearance > Splash Screen"
+    MSG_STEP2="2. Select 'fastfetch' and click Apply."
+    MSG_NOTE="💡 Note: Make sure the 'fastfetch' package is installed."
+fi
 
-# Hedef dizini oluştur
+echo "$MSG_START"
+
+# Target directory
 TARGET_DIR="$HOME/.local/share/plasma/look-and-feel/fastfetch-splash"
 
-# Eğer eski kurulum varsa yedekle
+# Backup if exists
 if [ -d "$TARGET_DIR" ]; then
-    echo "⚠️  Mevcut kurulum bulundu, yedekleniyor..."
+    echo "$MSG_BACKUP"
     mv "$TARGET_DIR" "$TARGET_DIR.backup.$(date +%s)"
 fi
 
-# Dizini oluştur
+# Create directory
 mkdir -p "$TARGET_DIR"
 
-# Dosyaları kopyala
-echo "📦 Dosyalar kopyalanıyor..."
+# Copy files
+echo "$MSG_COPY"
 cp -r contents "$TARGET_DIR/"
 cp metadata.json "$TARGET_DIR/"
 
-echo "✅ Kurulum tamamlandı!"
+echo "$MSG_DONE"
 echo ""
-echo "📌 Kullanım:"
-echo "   1. Sistem Ayarları > Görünüm > Açılış Ekranı"
-echo "   2. 'fastfetch' temasını seçin"
-echo "   3. Uygula butonuna tıklayın"
+echo "$MSG_USE"
+echo "   $MSG_STEP1"
+echo "   $MSG_STEP2"
 echo ""
-echo "💡 Not: fastfetch paketinin kurulu olduğundan emin olun:"
-echo "   sudo apt install fastfetch  # Debian/Ubuntu"
-echo "   sudo pacman -S fastfetch    # Arch Linux"
-echo ""
+echo "$MSG_NOTE"

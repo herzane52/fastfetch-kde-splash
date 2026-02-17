@@ -1,3 +1,5 @@
+[English](README.md) | [Türkçe](README.tr.md)
+
 # Fastfetch KDE Splash
 
 KDE Plasma splash screen that shows system info with fastfetch.
@@ -9,5 +11,3 @@ KDE Plasma splash screen that shows system info with fastfetch.
 chmod +x install.sh
 ./install.sh
 ```
-
-[Türkçe](README.tr.md)
