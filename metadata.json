@@ -1,0 +1,20 @@
+{
+    "KPackageStructure": "Plasma/LookAndFeel",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "info@herzane.tr",
+                "Name": "herzane"
+            }
+        ],
+        "Category": "",
+        "Description": "Fastfetch splash screen",
+        "Id": "fastfetch-splash",
+        "License": "MIT",
+        "Name": "fastfetch",
+        "Website": "https://github.com/herzane52/fastfetch-kde-splash"
+    },
+    "Keywords": "Desktop;Workspace;Appearance;Look and Feel;Logout;Lock;Suspend;Shutdown;Hibernate;",
+    "X-Plasma-APIVersion": "2",
+    "X-Plasma-MainScript": "default"
+}
