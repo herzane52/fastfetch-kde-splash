@@ -7,18 +7,12 @@ set -e
 
 # Language detection (TR or EN)
 if [[ $LANG == "tr"* ]]; then
-    MSG_START="🚀 Fastfetch KDE Splash Screen Kurulumu Başlıyor..."
-    MSG_BACKUP="⚠️  Mevcut kurulum bulundu, yedekleniyor..."
-    MSG_COPY="📦 Dosyalar kopyalanıyor..."
     MSG_DONE="✅ Kurulum tamamlandı!"
     MSG_USE="📌 Kullanım:"
     MSG_STEP1="1. Sistem Ayarları > Görünüm > Açılış Ekranı (Splash Screen)"
     MSG_STEP2="2. 'fastfetch' temasını seçin ve Uygula'ya tıklayın."
     MSG_NOTE="💡 Not: 'fastfetch' paketinin kurulu olduğundan emin olun."
 else
-    MSG_START="🚀 Starting Fastfetch KDE Splash Screen Installation..."
-    MSG_BACKUP="⚠️  Existing installation found, creating backup..."
-    MSG_COPY="📦 Copying files..."
     MSG_DONE="✅ Installation complete!"
     MSG_USE="📌 Usage:"
     MSG_STEP1="1. System Settings > Appearance > Splash Screen"
@@ -26,7 +20,6 @@ else
     MSG_NOTE="💡 Note: Make sure the 'fastfetch' package is installed."
 fi
 
-echo "$MSG_START"
 
 # Target directory
 TARGET_DIR="$HOME/.local/share/plasma/look-and-feel/fastfetch-splash"
@@ -41,7 +34,6 @@ fi
 mkdir -p "$TARGET_DIR"
 
 # Copy files
-echo "$MSG_COPY"
 cp -r contents "$TARGET_DIR/"
 cp metadata.json "$TARGET_DIR/"
 
