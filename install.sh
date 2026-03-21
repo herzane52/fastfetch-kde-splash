@@ -12,22 +12,24 @@ if [[ $LANG == "tr"* ]]; then
     MSG_STEP1="1. Sistem Ayarları > Görünüm > Açılış Ekranı (Splash Screen)"
     MSG_STEP2="2. 'fastfetch' temasını seçin ve Uygula'ya tıklayın."
     MSG_NOTE="💡 Not: 'fastfetch' paketinin kurulu olduğundan emin olun."
+    MSG_REMOVING="🗑️ Eski kopya siliniyor..."
 else
     MSG_DONE="✅ Installation complete!"
     MSG_USE="📌 Usage:"
     MSG_STEP1="1. System Settings > Appearance > Splash Screen"
     MSG_STEP2="2. Select 'fastfetch' and click Apply."
     MSG_NOTE="💡 Note: Make sure the 'fastfetch' package is installed."
+    MSG_REMOVING="🗑️ Removing old version..."
 fi
 
 
 # Target directory
 TARGET_DIR="$HOME/.local/share/plasma/look-and-feel/fastfetch-splash"
 
-# Backup if exists
+# Remove existing installation to avoid duplicates in KDE settings
 if [ -d "$TARGET_DIR" ]; then
-    echo "$MSG_BACKUP"
-    mv "$TARGET_DIR" "$TARGET_DIR.backup.$(date +%s)"
+    echo "$MSG_REMOVING"
+    rm -rf "$TARGET_DIR"
 fi
 
 # Create directory

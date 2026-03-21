@@ -10,13 +10,41 @@ Rectangle {
     property string infoData: ""
     property bool logoLoaded: false
     property bool infoLoaded: false
+    property bool errorOccurred: false
     property int stage: 0
     property bool minDurationMet: false
 
     Timer {
         id: minDurationTimer
-        interval: 4000 // Keep it visible for at least 4 seconds
+        interval: 4000
         running: false
+        onTriggered: {
+            minDurationMet = true;
+            if (root.stage >= 5) {
+                exitAnimation.start();
+            }
+        }
+    }
+
+    // Güvenlik Zamanlayıcısı: Eğer 3 saniye içinde veri gelmezse hata göster ve devam et
+    Timer {
+        id: safetyTimer
+        interval: 3000
+        running: true
+        onTriggered: {
+            if (!root.logoLoaded || !root.infoLoaded) {
+                root.errorOccurred = true;
+                root.infoData = "Error: 'fastfetch' not found on your system.\nPlease make sure the package is installed.";
+                introAnimation.start();
+                // Hata olsa bile 2 saniye sonra açılışa devam et
+                errorExitTimer.start();
+            }
+        }
+    }
+
+    Timer {
+        id: errorExitTimer
+        interval: 2000
         onTriggered: {
             minDurationMet = true;
             if (root.stage >= 5) {
@@ -37,7 +65,16 @@ Rectangle {
         connectedSources: []
         onNewData: (sourceName, data) => {
             var stdout = data["stdout"] || "";
-            var cleaned = stdout.replace(/\x1B\[[0-9;]*[A-GJKSTfmny]/g, "").trim();
+            // ANSI kaçış kodlarını temizle
+            var cleaned = stdout.replace(/\x1B\[[0-9;]*[A-GJKSTfmny]/g, "");
+            
+            // Satır sonlarındaki boşlukları temizle (Fastfetch'in info kısmı için eklediği sağ padding)
+            var lines = cleaned.split('\n');
+            for (var i = 0; i < lines.length; i++) {
+                lines[i] = lines[i].replace(/\s+$/, "");
+            }
+            // Baş ve sondaki boş satırları (!sadece satır atlamalarını!) temizle, normal .trim() sol hizalamayı bozar
+            cleaned = lines.join('\n').replace(/^[\r\n]+|[\r\n]+$/g, "");
             
             if (sourceName.indexOf("structure L") !== -1) {
                 root.logoData = cleaned;
@@ -47,10 +84,10 @@ Rectangle {
                 root.infoLoaded = true;
             }
             
-            // Wait for both logo and info to be ready before showing
             if (root.logoLoaded && root.infoLoaded) {
+                safetyTimer.stop();
                 introAnimation.start();
-                minDurationTimer.start(); // Start the timer here
+                minDurationTimer.start();
             }
             disconnectSource(sourceName);
         }
@@ -62,19 +99,19 @@ Rectangle {
     Item {
         id: content
         anchors.fill: parent
-        opacity: 0 // Start hidden
+        opacity: 0 
 
         Row {
             id: mainLayout
             anchors.centerIn: parent
-            spacing: 120 
+            spacing: 50
             
             // LOGO
             Text {
                 text: root.logoData
                 color: "#ff0000"
                 font.family: "Monospace"
-                font.pointSize: 15
+                font.pointSize: 13
                 font.weight: Font.Normal
                 textFormat: Text.PlainText
                 renderType: Text.NativeRendering
@@ -82,7 +119,7 @@ Rectangle {
                 verticalAlignment: Text.AlignVCenter
                 wrapMode: Text.NoWrap
                 
-                topPadding: 90
+                anchors.verticalCenter: parent.verticalCenter
                 
                 layer.enabled: true
                 layer.effect: DropShadow {
@@ -98,10 +135,12 @@ Rectangle {
                 text: root.infoData
                 color: "#ff0000"
                 font.family: "Monospace"
-                font.pointSize: 14 
+                font.pointSize: 13
                 textFormat: Text.PlainText
                 horizontalAlignment: Text.AlignLeft
                 verticalAlignment: Text.AlignVCenter
+                
+                anchors.verticalCenter: parent.verticalCenter
                 
                 layer.enabled: true
                 layer.effect: DropShadow {
