@@ -1,6 +1,9 @@
 [English](README.md) | [Türkçe](README.tr.md)
 
 # Fastfetch KDE Splash
+<p align="center">
+  <img src="contents/previews/splash.png" alt="Fastfetch Splash Görünümü" width="100%">
+</p>
 
 <p align="center">
   <video src="video.mp4" width="100%" controls autoplay loop muted></video>
