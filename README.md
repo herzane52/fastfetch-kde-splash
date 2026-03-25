@@ -2,6 +2,10 @@
 
 # Fastfetch KDE Splash
 
+<p align="center">
+  <video src="video.mp4" width="100%" controls autoplay loop muted></video>
+</p>
+
 This project is a theme for the KDE Plasma desktop environment that displays real-time system information on the splash screen using the `fastfetch` tool.
 
 ## Requirements

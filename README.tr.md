@@ -2,6 +2,10 @@
 
 # Fastfetch KDE Splash
 
+<p align="center">
+  <video src="video.mp4" width="100%" controls autoplay loop muted></video>
+</p>
+
 Bu proje, KDE Plasma masaüstü ortamı için `fastfetch` aracını kullanarak sistem bilgilerini açılış ekranında (Splash Screen) görüntüleyen bir temadır.
 
 ## Gereksinimler
