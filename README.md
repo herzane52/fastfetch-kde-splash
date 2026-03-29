@@ -4,9 +4,18 @@
   <img src="contents/previews/splash.png" alt="Fastfetch Splash Görünümü" width="100%">
 </p>
 
-<p align="center">
-  <video src="video.mp4" width="100%" controls autoplay loop muted></video>
-</p>
+<div align="center">
+  <table>
+    <tr>
+      <td width="50%">
+        <img src="video1.gif" width="100%">
+      </td>
+      <td width="50%">
+        <img src="video2.gif" width="100%">
+      </td>
+    </tr>
+  </table>
+</div>
 This project is a "hacker/matrix style" splash animation for KDE Plasma that displays real-time system information using the `fastfetch` tool.
 
 [English](README.md) | [Türkçe](README.tr.md)

@@ -4,8 +4,21 @@
 <p align="center">
   <img src="contents/previews/splash.png" alt="Fastfetch Splash Görünümü" width="100%">
 </p>
+<div align="center">
+  <table>
+    <tr>
+      <td width="50%">
+        <img src="video1.gif" width="100%">
+      </td>
+      <td width="50%">
+        <img src="video2.gif" width="100%">
+      </td>
+    </tr>
+  </table>
+</div>
 
 Bu proje, KDE Plasma masaüstü ortamı için `fastfetch` aracını kullanarak sistem bilgilerini açılış ekranında (Splash Screen) "hacker/matrix" tarzında görüntüleyen açılış animasyonudur.
+
 
 [English](README.md) | [Türkçe](README.tr.md)
 ## Gereksinimler
