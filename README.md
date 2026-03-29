@@ -1,5 +1,3 @@
-[English](README.md) | [Türkçe](README.tr.md)
-
 # Fastfetch KDE Splash
 
 <p align="center">
@@ -9,17 +7,22 @@
 <p align="center">
   <video src="video.mp4" width="100%" controls autoplay loop muted></video>
 </p>
-This project is a theme for the KDE Plasma desktop environment that displays real-time system information on the splash screen using the `fastfetch` tool.
+This project is a "hacker/matrix style" splash animation for KDE Plasma that displays real-time system information using the `fastfetch` tool.
+
+[English](README.md) | [Türkçe](README.tr.md)
 
 ## Requirements
 
 *   **KDE Plasma:** Version 5 or 6.
 *   **Fastfetch:** Must be installed and accessible via the terminal.
-*   **Qt5Compat.GraphicalEffects:** Required for some visual effects to work.
+*   **Qt5Compat.GraphicalEffects:** Required for visual effects to work.
 
-## Technical Details
+## Features & Technical Details
 
-The theme is QML-based and utilizes the `Plasma5Support` library to execute `fastfetch` commands in the background. It sanitizes ANSI color codes from the output and displays the data in a Monospace layout.
+* **Interactive Setup:** The installer runs interactively, asking you for your preferred theme color, layout (logo-only or full), and background transparency.
+* **Premium Neon Glow:** All texts feature a multi-layered DropShadow effect, resembling a glowing neon sign.
+* **Glitch/Matrix Effect:** Texts do not just appear; they form character by character in random positions, providing a futuristic aesthetic.
+* **Backend:** The theme is QML-based and utilizes the `Plasma5Support` library to execute `fastfetch` commands in the background. It sanitizes ANSI color codes and parses the output reliably.
 
 ## Installation
 
@@ -34,6 +37,8 @@ cd fastfetch-kde-splash
 chmod +x install.sh
 ./install.sh
 ```
+
+*Note: The script will now ask you a few questions interactively. Just press **ENTER** to apply the default settings (Red color, Logo-only layout, Black background).*
 
 ## Usage
 
