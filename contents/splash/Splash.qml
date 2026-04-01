@@ -7,9 +7,10 @@ Rectangle {
     color: bgColor 
 
     // Bu değerler install.sh tarafından değiştirilebilir
+    property bool isConfigured: false // Kurulum betiği çalıştırıldı mı kontrolü
     property string themeColor: "#ff0000" //text metin rengi
     property string displayMode: "logo" // "logo" veya "full"
-    property string bgColor: "#000000" // Arkaplan rengi veya şeffaf
+    property string bgColor: "#000000" // Arkaplan rengi veya şeffaf "transparent"
 
     property string logoData: ""
     property string infoData: ""
@@ -117,15 +118,20 @@ Rectangle {
         onTriggered: {
             var isReady = root.displayMode === "logo" ? root.logoLoaded : (root.logoLoaded && root.infoLoaded);
             if (!isReady) {
-                root.errorOccurred = true;
-                root.logoData = "";
-                root.infoData = "Error: 'fastfetch' not found on your system.\nPlease make sure the package is installed.";
-                root.displayMode = "full";
-                startEffects();
-                
-                errorExitTimer.start();
+                showError("'fastfetch' not found or could not be executed.\nPlease make sure the package is installed.");
             }
         }
+    }
+
+    function showError(msg) {
+        if (root.errorOccurred) return;
+        root.errorOccurred = true;
+        root.logoData = "";
+        root.infoData = "Error: " + msg + "\n\nVisit GitHub for installation & details:\nhttps://github.com/herzane52/fastfetch-kde-splash";
+        root.displayMode = "full";
+        safetyTimer.stop();
+        startEffects();
+        errorExitTimer.start();
     }
 
     Timer {
@@ -188,6 +194,11 @@ Rectangle {
                 lines[i] = lines[i].replace(/\s+$/, "");
             }
             cleaned = lines.join('\n').replace(/^[\r\n]+|[\r\n]+$/g, "");
+
+            if (cleaned === "") {
+                showError("'fastfetch' returned an empty output.");
+                return;
+            }
             
             if (sourceName.indexOf("structure L") !== -1) {
                 root.logoData = cleaned;
@@ -319,6 +330,11 @@ Rectangle {
     }
 
     Component.onCompleted: {
+        if (!root.isConfigured) {
+            showError("Configuration required! Please run 'install.sh' to finalize.");
+            return;
+        }
+
         executable.exec("fastfetch --structure L --pipe")
         if (root.displayMode === "full") {
             executable.exec("fastfetch --logo none --pipe")

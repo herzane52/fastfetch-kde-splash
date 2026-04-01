@@ -116,6 +116,7 @@ cp metadata.json "$TARGET_DIR/"
 
 # Inject settings into QML
 TARGET_QML="$TARGET_DIR/contents/splash/Splash.qml"
+sed -i "s/property bool isConfigured: .*/property bool isConfigured: true/g" "$TARGET_QML"
 sed -i "s/property string themeColor: \".*\"/property string themeColor: \"$COLOR\"/g" "$TARGET_QML"
 sed -i "s/property string displayMode: \".*\"/property string displayMode: \"$LAYOUT\"/g" "$TARGET_QML"
 sed -i "s/property string bgColor: \".*\"/property string bgColor: \"$BGCOLOR\"/g" "$TARGET_QML"

@@ -1,0 +1,43 @@
+=== ENGLISH ===
+Fastfetch KDE Splash Screen v1.4
+
+A clean and modern splash screen for KDE Plasma that uses 'fastfetch' to display system info.
+
+FEATURES:
+- Custom Theme Colors: Choose any color you like.
+- Layout Options: Logo-only or Full System Info.
+- Background Settings: Selection of colors or transparency.
+- Smooth Opening: Beautiful character-revealing animation.
+
+MANUAL CONFIGURATION (KDE Store Users):
+If you installed this via KDE Store, you will see a "Configuration Required" message. 
+You can fix this by:
+1. Running the `install.sh` from the project folder.
+2. OR manually editing the following file (see lines 10-13):
+   `~/.local/share/plasma/look-and-feel/fastfetch-splash/contents/splash/Splash.qml`
+   - Set `property bool isConfigured: true`
+   - Change `themeColor`, `displayMode`, and `bgColor` values.
+
+GitHub Repository: https://github.com/herzane52/fastfetch-kde-splash
+
+=== TÜRKÇE ===
+Fastfetch KDE Açılış Ekranı v1.4
+
+'fastfetch' aracını kullanarak sistem bilgilerini şık bir şekilde sunan sade ve modern KDE Plasma açılış ekranı.
+
+ÖZELLİKLER:
+- Renk Seçimi: İstediğiniz herhangi bir rengi (tema rengini) seçebilirsiniz.
+- Düzen Seçenekleri: Sadece logo veya tüm bilgileri kapsayan "full" mod.
+- Arka Plan Ayarı: Farklı renk seçenekleri veya şeffaflık desteği.
+- Şık Açılış: Karakterlerin güzelce belirdiği modern bir animasyon.
+
+ELLE (MANUEL) YAPILANDIRMA:
+Eğer bu temayı KDE Mağazası üzerinden kurduklarınızda "Configuration Required" uyarısı alırsınız. 
+Bunu şu şekilde düzeltebilirsiniz:
+1. Proje klasöründeki `install.sh` betiğini çalıştırarak.
+2. VEYA şu dosyayı (10-13. satırlar arası) elle düzenleyerek:
+   `~/.local/share/plasma/look-and-feel/fastfetch-splash/contents/splash/Splash.qml`
+   - `property bool isConfigured` değerini `true` yapın.
+   - `themeColor`, `displayMode` ve `bgColor` değerlerini isteğinize göre değiştirin.
+
+GitHub Deposu: https://github.com/herzane52/fastfetch-kde-splash
