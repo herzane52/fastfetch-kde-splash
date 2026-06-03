@@ -154,7 +154,7 @@ Rectangle {
             }
         }
         shuffleArray(root.logoIndices);
-        root.displayedLogoData = root.logoData.replace(/[^\r\n]/g, " ");
+        root.displayedLogoData = root.logoData.replace(/[^\r\n]/g, " ");
         root.charsPerFrameLogo = Math.max(1, Math.ceil(root.logoIndices.length / 50)); 
 
         // Info Ayarları
@@ -166,7 +166,7 @@ Rectangle {
                 }
             }
             shuffleArray(root.infoIndices);
-            root.displayedInfoData = root.infoData.replace(/[^\r\n]/g, " "); 
+            root.displayedInfoData = root.infoData.replace(/[^\r\n]/g, " "); 
             root.charsPerFrameInfo = Math.max(1, Math.ceil(root.infoIndices.length / 50));
         }
 
