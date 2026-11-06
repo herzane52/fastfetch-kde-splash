@@ -1,4 +1,4 @@
-<h1 align="center">Fastfetch KDE Splash v1.5</h1>
+<h1 align="center">Fastfetch KDE Splash</h1>
 
 <p align="center">
   <img src="contents/previews/splash.png" alt="Fastfetch Splash Preview" width="100%">
@@ -7,51 +7,97 @@
 <div align="center">
   <table>
     <tr>
-      <td width="50%">
-        <img src="video1.gif" width="100%">
+      <th width="50%" align="center"><h3>Fedora - Logo Only</h3></th>
+      <th width="50%" align="center"><h3>Arch - Logo + System Info</h3></th>
+    </tr>
+    <tr>
+      <td align="center">
+        <img src="previews/fedora-logo.gif" width="100%">
       </td>
-      <td width="50%">
-        <img src="video2.gif" width="100%">
+      <td align="center">
+        <img src="previews/arch-logo-description.gif" width="100%">
       </td>
     </tr>
   </table>
+
+  <details>
+    <summary><b>🔍 More previews (click)</b></summary>
+    <br>
+    <table>
+      <tr>
+        <th width="50%" align="center"><h3>Custom ASCII Logo</h3></th>
+        <th width="50%" align="center"><h3>System Info Only</h3></th>
+      </tr>
+      <tr>
+        <td align="center">
+          <img src="previews/ascii.gif" width="100%">
+        </td>
+        <td align="center">
+          <img src="previews/description.gif" width="100%">
+        </td>
+      </tr>
+      <tr>
+        <th width="50%" align="center"><h3>KDE Linux Logo</h3></th>
+        <th width="50%" align="center"><h3>Debian - Logo Only</h3></th>
+      </tr>
+      <tr>
+        <td align="center">
+          <img src="previews/kdelinux.gif" width="100%">
+        </td>
+        <td align="center">
+          <img src="previews/debian.gif" width="100%">
+        </td>
+      </tr>
+      <tr>
+        <th width="50%" align="center"><h3>CachyOS - Transparent Background (Logo + System Info)</h3></th>
+        <th width="50%" align="center"><h3>CachyOS - Logo Only</h3></th>
+      </tr>
+      <tr>
+        <td align="center">
+          <img src="previews/logo-description.gif" width="100%">
+        </td>
+        <td align="center">
+          <img src="previews/logo.gif" width="100%">
+        </td>
+      </tr>
+    </table>
+  </details>
 </div>
 
-<p align="center">
-  A "hacker/matrix style" splash animation for KDE Plasma using <code>fastfetch</code>.
-</p>
+## <p align="center">A "hacker/matrix style" splash animation for KDE Plasma using <code>fastfetch</code>.</p>
+
+## <p align="center"><strong>English</strong> | <strong><a href="README.tr.md">Türkçe</a></strong></p>
 
 <p align="center">
-  <strong><a href="README.md">English</a></strong> | <strong><a href="README.tr.md">Türkçe</a></strong>
-</p>
-
-<p align="center">
-  <a href="https://kde.org/plasma-desktop/"><img src="https://img.shields.io/badge/KDE_Plasma-5%20%7C%206-blue?logo=kde&logoColor=white" alt="KDE Plasma"></a>
-  <a href="https://doc.qt.io/qt-6/qmlapplications.html"><img src="https://img.shields.io/badge/QML-Qt5%20%7C%20Qt6-41CD52?logo=qt&logoColor=white" alt="QML"></a>
+  <a href="https://kde.org/plasma-desktop/"><img src="https://img.shields.io/badge/KDE_Plasma-6-blue?logo=kde&logoColor=white" alt="KDE Plasma"></a>
+  <a href="https://doc.qt.io/qt-6/qmlapplications.html"><img src="https://img.shields.io/badge/QML-Qt6-41CD52?logo=qt&logoColor=white" alt="QML"></a>
   <a href="https://www.gnu.org/software/bash/"><img src="https://img.shields.io/badge/Bash-Script-4EAA25?logo=gnu-bash&logoColor=white" alt="Bash"></a>
   <a href="https://github.com/fastfetch-cli/fastfetch"><img src="https://img.shields.io/badge/Fastfetch-System%20Info-ff69b4" alt="Fastfetch"></a>
 </p>
 
-### 🌟 Features
+## Features
 
-*   **Color Selection:** Freely choose any theme color you want.
-*   **Logo & Info Layouts:** Choose between logo-only or "full" mode with all details.
-*   **Background Settings:** Set the background color or make it transparent.
-*   **Adjustable Animation Speeds (v1.5):** Choose between Normal, Fast, and Slow during installation.
+*   **Color Selection:** You can pick any color you like (the theme color).
+*   **Logo & Info Layouts:** Logo only, logo + system info ("full"), or system info only ("info").
+*   **Background Settings:** Set a background color or make it transparent.
+*   **TUI & CLI Installer:** Easy setup from the terminal or the visual TUI menu, with multi-language support.
+*   **Custom Logo Support:** fastfetch logos or a custom ASCII logo.
+*   **Choose Your Distro Logo:** During installation all fastfetch distro logos are listed; search for the distro you want, select it, and preview it before confirming.
+*   **Your Own ASCII Logo:** Add your ASCII logo to the `ascii-logo.txt` file in the project root and pick the "ASCII" option during installation.
 
-### 📋 Requirements
+## Requirements
 
-*   **KDE Plasma:** Version 5 or 6.
+*   **KDE Plasma:** Version 6.
 *   **Fastfetch:** Must be installed on your system.
 *   **Qt5Compat.GraphicalEffects:** Required for visual effects.
 
-## 🛠️ Installation and Configuration
+##  Installation and Configuration
 
 ### 1. Using the Installation Script (Recommended)
 
 The `install.sh` script automates everything:
 *   Asks for your preferences (color, layout, background).
-*   Copies files to the correct directory (`~/.local/share/plasma/look-and-feel/fastfetch-splash`).
+*   Copies the files to the correct directory (`~/.local/share/plasma/look-and-feel/fastfetch-splash`).
 *   Automatically completes the configuration.
 
 ```bash
@@ -59,29 +105,27 @@ The `install.sh` script automates everything:
 git clone https://github.com/herzane52/fastfetch-kde-splash.git
 cd fastfetch-kde-splash
 ```
-
 ```bash
-# to give permission to run the installation script
-chmod +x install.sh
-```
-```bash
-# to run the installation script
+# give execute permission
+chmod +x install.sh install-tui.sh
+# run installer (automatically opens TUI if whiptail is installed, otherwise continues in CLI)
 ./install.sh
 ```
 
-### 2. Manual Configuration (Store Users)
+```bash
+# to run in CLI mode directly even if whiptail is installed
+./install.sh --cli
+```
 
-If you installed the theme via KDE Store, you will encounter the "Configuration Required" error. To fix this, you can manually edit the following file (see lines 10-13):
+### 2. Manual Customization (or KDE Store Users)
+
+If you installed the theme via the KDE Store, it works out of the box with default settings. To customize the settings (color, layout, background), edit the file manually:
 
 ```bash
 nano ~/.local/share/plasma/look-and-feel/fastfetch-splash/contents/splash/Splash.qml
 ```
 
-*   Open the `Splash.qml` file.
-*   Set `property bool isConfigured` to `true`.
-*   Customize `themeColor`, `displayMode`, `bgColor`, and **Animation Speed** settings (`glitchInterval`, `introDuration`, etc.) according to your preference. Each property is documented with comments inside the file.
-
-### 🚀 Usage
+###  Usage
 
 1.  Open **System Settings**.
 2.  Go to the **Appearance > Splash Screen** tab.
@@ -89,24 +133,18 @@ nano ~/.local/share/plasma/look-and-feel/fastfetch-splash/contents/splash/Splash
 
 ## Development and Quick Test
 
-You can quickly test the splash screen using `ksplashqml`. From the project directory:
+You can quickly test the splash screen using the `ksplashqml` tool. From the project directory:
 
 ```bash
-# make sure the path is correct
-ksplashqml /home/fastfetch-kde-splash
+ksplashqml "$PWD"
 ```
 
-> **Note:** Make sure to set `isConfigured` to `true` in `Splash.qml` before testing.
+##  Troubleshooting
 
-## 🛠️ Troubleshooting
-
-*   **"Configuration Required" Error:** This happens when the theme is installed without using the script (`install.sh`). Run the installation script or set `isConfigured` to `true` in `Splash.qml` to fix it.
 *   **"'fastfetch' not found" Error:** `fastfetch` is not installed on your system. Install it using your distribution's package manager (e.g., `sudo pacman -S fastfetch` or `sudo apt install fastfetch`).
-*   **"'fastfetch' returned empty output" Error:** The command is running but not returning any output. Verify that `fastfetch` works correctly in your terminal.
-*   **Visual Glitches/Issues:** If effects (neon glow, glitch, etc.) are invisible, ensure that the `Qt5Compat.GraphicalEffects` package is installed.
 
-<div align="center">
+*   **"'fastfetch' returned empty output" Error:** The command is running but not returning any output. Make sure `fastfetch --structure L --pipe` works correctly in your terminal.
 
-## [MIT](LICENSE) Licensed
+*   **Visual Glitches/Issues:** If effects (neon glow, glitch, etc.) are invisible, make sure the `Qt5Compat.GraphicalEffects` package is installed. Package names differ per distribution: Arch/Manjaro → `qt6-5compat`, Fedora → `qt6-qt5compat`, Debian/Ubuntu → `qml6-module-qt5compat-graphicaleffects`.
 
-</div>
+*   **Theme Not Showing in the List:** Run `install.sh` again. If it still does not appear, test the project with `ksplashqml`, check the theme directory (`~/.local/share/plasma/look-and-feel/fastfetch-splash`), and close and reopen the System Settings window.

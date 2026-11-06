@@ -1,0 +1,60 @@
+name: Build KDE Store Package
+
+# Builds the theme package (metadata.json + contents/) as a zip.
+# Triggers: new version tag (v*) or manual run from the Actions tab.
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Read version from metadata.json
+        id: meta
+        run: |
+          VERSION=$(grep -oP '"Version":\s*"\K[^"]+' metadata.json)
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "Detected version: $VERSION"
+
+      - name: Validate package
+        run: |
+          test -f metadata.json || { echo "metadata.json missing"; exit 1; }
+          test -f contents/splash/Splash.qml || { echo "Splash.qml missing"; exit 1; }
+          echo "Package structure OK"
+
+      - name: Install zip
+        run: command -v zip >/dev/null || (sudo apt-get update && sudo apt-get install -y zip)
+
+      - name: Build zip
+        run: |
+          STAGE="$(mktemp -d)"
+          cp metadata.json "$STAGE/"
+          cp -r contents "$STAGE/"
+          # KDE Store expects metadata.json at the root of the archive
+          (cd "$STAGE" && zip -r -9 "$GITHUB_WORKSPACE/fastfetch-splash.zip" metadata.json contents)
+          ls -lh fastfetch-splash.zip
+          unzip -l fastfetch-splash.zip
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: fastfetch-splash-${{ steps.meta.outputs.version }}
+          path: fastfetch-splash.zip
+          if-no-files-found: error
+
+      - name: Attach to release (only on tag)
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: fastfetch-splash.zip
+          generate_release_notes: true

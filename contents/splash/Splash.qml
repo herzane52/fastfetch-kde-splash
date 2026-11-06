@@ -11,11 +11,8 @@ Rectangle {
     // These values are automatically modified by the 'install.sh' script.
     // =========================================================================
 
-    // Checks if the installation script has been run. Must be 'true' for the splash to work.
-    property bool isConfigured: false
-
     // The main color used for the text and drop shadow glow (HEX code, e.g., "#ff0000").
-    property string themeColor: "#ff0000" 
+    property string themeColor: "#ffffff" 
 
     // Layout mode. "logo" shows only the OS logo. "full" shows the logo + system information. "info" shows only system information.
     property string displayMode: "logo" 
@@ -370,11 +367,6 @@ Rectangle {
     }
 
     Component.onCompleted: {
-        if (!root.isConfigured) {
-            showError("Configuration required! Please run 'install.sh' to finalize.");
-            return;
-        }
-
         executable.exec("fastfetch --structure L --pipe")
         if (root.displayMode === "full" || root.displayMode === "info") {
             executable.exec("fastfetch --logo none --pipe")
